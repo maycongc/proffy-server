@@ -1,10 +1,9 @@
-import * as Knex from "knex";
+import * as Knex from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
-  
-  await knex.schema.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
+  knex.schema.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
 
-  return await knex.schema.createTable('users', table => {
+  return knex.schema.createTable('users', table => {
     table.uuid('id').primary().defaultTo(knex.raw('uuid_generate_v4()'));
     table.string('name').notNullable();
     table.string('avatar').notNullable();
@@ -14,7 +13,7 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTableIfExists('users');
-  
-  return await knex.schema.raw('DROP EXTENSION IF EXISTS "uuid-ossp"');
+  knex.schema.dropTableIfExists('users');
+
+  return knex.schema.raw('DROP EXTENSION IF EXISTS "uuid-ossp"');
 }

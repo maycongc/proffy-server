@@ -1,12 +1,13 @@
-import * as Knex from "knex";
+import * as Knex from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
-  return await knex.schema.createTable('classes', table => {
+  return knex.schema.createTable('classes', table => {
     table.uuid('id').primary().defaultTo(knex.raw('uuid_generate_v4()'));
     table.string('subject').notNullable();
     table.string('cost').notNullable();
 
-    table.uuid('user_id')
+    table
+      .uuid('user_id')
       .notNullable()
       .references('id')
       .inTable('users')
@@ -16,6 +17,5 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  return await knex.schema.dropTableIfExists('classes');
+  return knex.schema.dropTableIfExists('classes');
 }
-

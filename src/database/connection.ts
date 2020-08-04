@@ -7,8 +7,8 @@ const db = knex({
     port: 5432,
     user: 'postgres',
     password: 'docker',
-    database: 'nlw-proffy'
-  }
+    database: 'nlw-proffy',
+  },
 });
 
 export default db;

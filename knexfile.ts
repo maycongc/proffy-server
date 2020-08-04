@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 
-
 module.exports = {
   client: 'pg',
   connection: {
@@ -8,9 +7,9 @@ module.exports = {
     port: 5432,
     user: 'postgres',
     password: 'docker',
-    database: 'nlw-proffy'
+    database: 'nlw-proffy',
   },
   migrations: {
-    directory: resolve(__dirname, 'src', 'database', 'migrations')
-  }
-}
+    directory: resolve(__dirname, 'src', 'database', 'migrations'),
+  },
+};
