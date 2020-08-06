@@ -31,6 +31,7 @@ class ClassesController {
         .where('subject', subject)
         .join('users', 'classes.user_id', '=', 'users.id')
         .select(
+          'users.id',
           'users.avatar',
           'users.name',
           'classes.subject',
