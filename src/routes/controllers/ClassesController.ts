@@ -40,7 +40,7 @@ class ClassesController {
           'users.whatsapp',
         );
 
-      return res.json({ classes });
+      return res.json(classes);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
